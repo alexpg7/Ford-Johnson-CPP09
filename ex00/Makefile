@@ -1,8 +1,9 @@
 NAME = btc
 SRC = main.cpp \
-	BitcoinExchange.cpp
+	BitcoinExchange.cpp \
+	Date.cpp
 
-INCLUDE = BitcoinExchange.hpp Makefile
+INCLUDE = BitcoinExchange.hpp Date.hpp Makefile
 
 OBJ = $(SRC:.cpp=.o)
 CC = c++

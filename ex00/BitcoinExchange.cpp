@@ -1,31 +1,26 @@
-#include "Serializer.hpp"
+#include "BitcoinExchange.hpp"
 
-Serializer::Serializer()
+BitcoinExchange::BitcoinExchange()
 {
 	return ;
 }
 
-Serializer::Serializer(const Serializer &bscalar)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &bscalar)
 {
 	return ;
 }
 
-Serializer::~Serializer()
+BitcoinExchange::~BitcoinExchange()
 {
 	return ;
 }
 
-Serializer&	Serializer::operator=(const Serializer& scalar)
+BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& scalar)
 {
 	return (*this);
 }
 
-uintptr_t	Serializer::serialize(Data* ptr)
+void	BitcoinExchange::loadInput(std::map<std::string, float> input)
 {
-	return reinterpret_cast<uintptr_t>(ptr);
-}
-
-Data*	Serializer::deserialize(uintptr_t raw)
-{
-	return reinterpret_cast<Data*>(raw);
+	_inputmap = input;
 }
