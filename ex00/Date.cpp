@@ -15,7 +15,10 @@ Date::~Date()
 
 }
 
-Date&	operator=(const Date& date)
+Date&	Date::operator=(const Date& date)
 {
-
+	_year = date._year;
+	_month = date._month;
+	_day = date._day;
+	return (*this);
 }

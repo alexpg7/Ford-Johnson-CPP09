@@ -10,8 +10,8 @@ class	BitcoinExchange
 		std::map<Date, float>	_data;
 	public:
 		BitcoinExchange();
-		BitcoinExchange(const BitcoinExchange &bscalar);
+		BitcoinExchange(const BitcoinExchange& copy);
 		~BitcoinExchange();
-		BitcoinExchange&	operator=(const BitcoinExchange& scalar);
-		void	loadInput(Date, float> input);
+		BitcoinExchange&	operator=(const BitcoinExchange& copy);
+		void	loadInput(std::map<Date, float> input);
 };

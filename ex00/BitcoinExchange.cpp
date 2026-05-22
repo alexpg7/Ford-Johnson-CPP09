@@ -5,9 +5,9 @@ BitcoinExchange::BitcoinExchange()
 	return ;
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &bscalar)
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& copy)
 {
-	return ;
+	*this = copy;
 }
 
 BitcoinExchange::~BitcoinExchange()
@@ -15,12 +15,14 @@ BitcoinExchange::~BitcoinExchange()
 	return ;
 }
 
-BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& scalar)
+BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& copy)
 {
+	if (this == &copy)
+		return (*this);
 	return (*this);
 }
 
-void	BitcoinExchange::loadInput(std::map<std::string, float> input)
+void	BitcoinExchange::loadInput(std::map<Date, float> input)
 {
 	_inputmap = input;
 }
