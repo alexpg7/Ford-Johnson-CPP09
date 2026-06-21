@@ -10,5 +10,8 @@ class Date
 		Date(unsigned int year, unsigned int month, unsigned int day);
 		Date();
 		Date&	operator=(const Date& date);
+		bool	Date::operator>(const Date& date);
+		bool	Date::operator<(const Date& date);
+		bool	Date::operator==(const Date& date);
 		~Date();
 };
