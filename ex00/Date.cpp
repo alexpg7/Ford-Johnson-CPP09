@@ -1,5 +1,6 @@
 #include "Date.hpp"
 #include <stdexcept>
+#include <iomanip>
 
 Date::Date(): _year(0), _month(1), _day(1)
 {
@@ -43,7 +44,7 @@ Date&	Date::operator=(const Date& date)
 	return (*this);
 }
 
-bool	Date::operator>(const Date& date)
+bool	Date::operator>(const Date& date) const
 {
 	if (this->_year > date._year)
 		return true;
@@ -58,7 +59,7 @@ bool	Date::operator>(const Date& date)
 	return false;
 }
 
-bool	Date::operator<(const Date& date)
+bool	Date::operator<(const Date& date) const
 {
 	if (this->_year < date._year)
 		return true;
@@ -73,9 +74,34 @@ bool	Date::operator<(const Date& date)
 	return false;
 }
 
-bool	Date::operator==(const Date& date)
+bool	Date::operator==(const Date& date) const
 {
 	if (this->_year == date._year && this->_month == date._month && this->_day == date._day)
 		return true;
 	return false;
+}
+
+unsigned int	Date::getYear() const
+{
+	return _year;
+}
+
+unsigned int	Date::getMonth() const
+{
+	return _month;
+}
+
+unsigned int	Date::getDay() const
+{
+	return _day;
+}
+
+std::ostream& operator<<(std::ostream& os, const Date& date)
+{
+	os << std::setfill('0')
+	<< std::setw(4) << date.getYear() << "-"
+	<< std::setw(2) << date.getMonth() << "-"
+	<< std::setw(2) << date.getDay();
+
+	return os;
 }

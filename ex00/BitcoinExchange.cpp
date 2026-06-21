@@ -1,4 +1,5 @@
 #include "BitcoinExchange.hpp"
+#include <iomanip>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -22,7 +23,28 @@ BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange& copy)
 	return (*this);
 }
 
-void	BitcoinExchange::loadInput(std::map<Date, float> input)
+void	BitcoinExchange::loadData(std::map<Date, float> data)
 {
-	_inputmap = input;
+	_data = data;
+}
+void BitcoinExchange::printData()
+{
+	std::ios oldState(nullptr);
+	oldState.copyfmt(std::cout);
+
+	std::cout << std::fixed << std::setprecision(2);
+
+	for (std::map<Date, float>::const_iterator it = _data.begin();
+		it != _data.end();
+		++it)
+	{
+		std::cout << it->first << ": " << it->second << std::endl;
+	}
+
+	std::cout.copyfmt(oldState);
+}
+
+std::map<Date, float>&	BitcoinExchange::getData()
+{
+	return _data;
 }

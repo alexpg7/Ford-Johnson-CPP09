@@ -13,5 +13,7 @@ class	BitcoinExchange
 		BitcoinExchange(const BitcoinExchange& copy);
 		~BitcoinExchange();
 		BitcoinExchange&	operator=(const BitcoinExchange& copy);
-		void	loadInput(std::map<Date, float> input);
+		void	printData();
+		std::map<Date, float>&	getData();
+		void	loadData(std::map<Date, float> data);
 };
