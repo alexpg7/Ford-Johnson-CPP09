@@ -54,16 +54,6 @@ void	PmergeMe::display()
 	}
 }
 
-static void	sort1(std::vector<int>& list)
-{
-	return ;
-}
-
-static void	sort2(std::deque<int>& list)
-{
-	return ;
-}
-
 void	PmergeMe::sort()
 {
 	_size = list1.size();

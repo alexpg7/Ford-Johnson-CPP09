@@ -1,6 +1,7 @@
 NAME = PmergeMe
 SRC = main.cpp \
 	PmergeMe.cpp \
+	sorting.cpp
 
 INCLUDE = Makefile PmergeMe.hpp
 

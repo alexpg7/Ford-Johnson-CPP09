@@ -5,6 +5,7 @@
 #include <climits>
 #include <sys/time.h>
 #include <iostream>
+#include <algorithm>
 
 class PmergeMe
 {
@@ -29,3 +30,7 @@ class PmergeMe
 };
 
 long long	get_time_us();
+
+// sorting algo
+void	sort1(std::vector<int>& list);
+void	sort2(std::deque<int>& list);
