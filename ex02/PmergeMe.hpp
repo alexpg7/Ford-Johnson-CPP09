@@ -31,6 +31,12 @@ class PmergeMe
 
 long long	get_time_us();
 
+typedef struct	Group
+{
+	int					largest;
+	std::vector<int>	values;
+};
+
 // sorting algo
 void	sort1(std::vector<int>& list);
 void	sort2(std::deque<int>& list);
