@@ -37,6 +37,12 @@ typedef struct	Group
 	std::vector<int>	values;
 };
 
+typedef struct	Pair
+{
+	Group	a;
+	Group	b;
+};
+
 // sorting algo
 void	sort1(std::vector<int>& list);
 void	sort2(std::deque<int>& list);
