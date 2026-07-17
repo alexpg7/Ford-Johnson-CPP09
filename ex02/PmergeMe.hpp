@@ -36,6 +36,7 @@ struct Group
 	std::vector<int>	values;
 };
 
+
 // sorting algo
 void	sort1(std::vector<int>& list);
 void	sort2(std::deque<int>& list);

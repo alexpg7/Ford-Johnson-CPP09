@@ -1,6 +1,6 @@
 #include "PmergeMe.hpp"
 
-void sort1(std::vector<int>& list)
+void	sort1(std::vector<int>& list)
 {
 	return ;
 }
