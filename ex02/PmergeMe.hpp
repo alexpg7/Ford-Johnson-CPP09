@@ -31,16 +31,9 @@ class PmergeMe
 
 long long	get_time_us();
 
-typedef struct	Group
+struct Group
 {
-	int					largest;
 	std::vector<int>	values;
-};
-
-typedef struct	Pair
-{
-	Group	a;
-	Group	b;
 };
 
 // sorting algo

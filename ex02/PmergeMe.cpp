@@ -59,6 +59,10 @@ void	PmergeMe::sort()
 	_size = list1.size();
 	time1 = get_time_us();
 	sort1(list1);
+	std::cout << "List: ";
+	for (int i = 0; i < list1.size(); i++)
+		std::cout << list1[i] << ", ";
+	std::cout << std::endl;
 	totaltime1 += get_time_us() - time1;
 
 	time2 = get_time_us();
