@@ -33,7 +33,9 @@ long long	get_time_us();
 
 struct Group
 {
-	std::vector<int>	values;
+	int				large;
+	struct Group	*left;
+	struct Group	*right;
 };
 
 
