@@ -1,48 +1,51 @@
 #include "PmergeMe.hpp"
 
-void mergeInsertion(std::vector<Group*>& groups)
+std::vector<Group>	ft_bubblesort(std::vector<Group>& newgroups)
+{
+	return newgroups;
+}
+
+void mergeInsertion(std::vector<Group>& groups)
 {
 	if (groups.size() <= 1)
 		return;
 
-	std::vector<Group*> newgroups;
+	std::vector<Group> newgroups;
 
 	for (size_t i = 0; i + 1 < groups.size(); i += 2)
 	{
-		Group* g = new Group;
+		Group	g;
 
-		if (groups[i]->large > groups[i + 1]->large)
+		if (groups[i].large > groups[i + 1].large)
 		{
-			g->large = groups[i]->large;
-			g->left  = groups[i];
-			g->right = groups[i + 1];
+			g.large = groups[i].large;
+			g.list.push_back(groups[i]);
+			g.list.push_back(groups[i + 1]);
 		}
 		else
 		{
-			g->large = groups[i + 1]->large;
-			g->left  = groups[i + 1];
-			g->right = groups[i];
+			g.large = groups[i + 1].large;
+			g.list.push_back(groups[i + 1]);
+			g.list.push_back(groups[i]);
 		}
 
 		newgroups.push_back(g);
 	}
-
 	// Handle an odd element here if groups.size() is odd.
 
 	mergeInsertion(newgroups);
+	groups = ft_bubblesort(newgroups);
 }
 
 void sort1(std::vector<int>& list)
 {
-	std::vector<Group*> groups;
+	std::vector<Group> groups;
 
 	for (size_t i = 0; i < list.size(); ++i)
 	{
-		Group* g = new Group;
+		Group	g;
 
-		g->large = list[i];
-		g->left = NULL;
-		g->right = NULL;
+		g.large = list[i];
 
 		groups.push_back(g);
 	}

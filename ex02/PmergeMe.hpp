@@ -33,9 +33,8 @@ long long	get_time_us();
 
 struct Group
 {
-	int				large;
-	struct Group	*left;
-	struct Group	*right;
+	int					large;
+	std::vector<Group>	list; //[0] large, [1] small
 };
 
 
