@@ -6,17 +6,8 @@ std::vector<Group>	ft_bubblesort(std::vector<Group>& newgroups)
 
 	for (int i = 0; i < newgroups.size(); i++)
 	{
-		if (newgroups[i].list.size() > 1)
-		{
-			groups.push_back(newgroups[i].list[0]);
-			groups.push_back(newgroups[i].list[1]);
-		}
-		else
-		{
-			Group	g;
-			g.large = newgroups[i].large;
-			groups.push_back(g);
-		}
+		groups.push_back(newgroups[i].list[0]);
+		groups.push_back(newgroups[i].list[1]);
 	}
 	for (int i = 0; i < groups.size() - 1; i++)
 	{
