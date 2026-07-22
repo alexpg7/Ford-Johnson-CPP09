@@ -24,6 +24,40 @@ std::vector<Group>	ft_bubblesort(std::vector<Group>& newgroups)
 	return groups;
 }
 
+std::vector<Group>	ft_insertion(std::vector<Group>& newgroups, Group odd, bool oddflag)
+{
+	std::vector<Group>	mainchain;
+
+	int	index;
+	mainchain.push_back(newgroups[0].list[0]);
+	mainchain.push_back(newgroups[0].list[1]);
+	for (int i = 1; i < newgroups.size(); i++)
+	{
+		index = 0;
+		for (int j = 0; j < mainchain.size(); j++)
+		{
+			if (newgroups[i].list[1].large > mainchain[j].large)
+				index = j;
+			else
+				break ;
+		}
+		//insert [1] in index position in mainchain
+		mainchain.push_back(newgroups[i].list[0]);
+	}
+	if (oddflag)
+	{
+		for (int j = 0; j < mainchain.size(); j++)
+		{
+			if (odd.large > mainchain[j].large)
+				index = j;
+			else
+				break ;
+		}
+		//insert odd in index position in mainchain
+	}
+	return mainchain;
+}
+
 void mergeInsertion(std::vector<Group>& groups)
 {
 	if (groups.size() <= 1)
@@ -50,10 +84,19 @@ void mergeInsertion(std::vector<Group>& groups)
 
 		newgroups.push_back(g);
 	}
-	// Handle an odd element here if groups.size() is odd.
+	Group	odd;
+	bool	oddflag;
+	if (groups.size() % 2 != 0)
+	{
+		odd = groups[groups.size() - 1];
+		oddflag = true;
+	}
+	else
+		oddflag = false;
 	mergeInsertion(newgroups);
 	//here, do binary insertion sort
 	groups = ft_bubblesort(newgroups);
+	//groups = ft_insertion(newgroups, odd, oddflag);
 }
 
 void sort1(std::vector<int>& list)
