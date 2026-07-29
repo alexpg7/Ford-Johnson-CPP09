@@ -88,7 +88,7 @@ int	main(int narg, char **argv)
 	std::cout << "Before:\t";
 	pmm.display();
 	std::cout << std::endl;
-	pmm.sort();
+	pmm.sort(false);
 	std::cout << "After:\t";
 	pmm.display();
 	std::cout << std::endl;

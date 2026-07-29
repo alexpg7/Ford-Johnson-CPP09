@@ -1,39 +1,16 @@
 #include "PmergeMe.hpp"
 
-std::vector<Group>	ft_bubblesort(std::vector<Group>& newgroups)
+template <typename Container, typename T>
+Container	ft_insertion(Container& newgroups, T& odd, bool oddflag)
 {
-	std::vector<Group>	groups;
-
-	for (int i = 0; i < newgroups.size(); i++)
-	{
-		groups.push_back(newgroups[i].list[0]);
-		groups.push_back(newgroups[i].list[1]);
-	}
-	for (int i = 0; i < groups.size() - 1; i++)
-	{
-		for (int j = i + 1; j < groups.size(); j++)
-		{
-			if (groups[i].large > groups[j].large)
-			{
-				Group	aux = groups[i];
-				groups[i] = groups[j];
-				groups[j] = aux;
-			}
-		}
-	}
-	return groups;
-}
-
-std::vector<Group>	ft_insertion(std::vector<Group>& newgroups, Group odd, bool oddflag)
-{
-	std::vector<Group>	mainchain;
+	Container	mainchain;
 
 	int	index;
-	mainchain.push_back(newgroups[0].list[0]);
 	mainchain.push_back(newgroups[0].list[1]);
+	mainchain.push_back(newgroups[0].list[0]);
 	for (int i = 1; i < newgroups.size(); i++)
 	{
-		index = 0;
+		index = -1;
 		for (int j = 0; j < mainchain.size(); j++)
 		{
 			if (newgroups[i].list[1].large > mainchain[j].large)
@@ -41,11 +18,12 @@ std::vector<Group>	ft_insertion(std::vector<Group>& newgroups, Group odd, bool o
 			else
 				break ;
 		}
-		//insert [1] in index position in mainchain
+		mainchain.insert(mainchain.begin() + index + 1, newgroups[i].list[1]);
 		mainchain.push_back(newgroups[i].list[0]);
 	}
 	if (oddflag)
 	{
+		index = -1;
 		for (int j = 0; j < mainchain.size(); j++)
 		{
 			if (odd.large > mainchain[j].large)
@@ -53,21 +31,22 @@ std::vector<Group>	ft_insertion(std::vector<Group>& newgroups, Group odd, bool o
 			else
 				break ;
 		}
-		//insert odd in index position in mainchain
+		mainchain.insert(mainchain.begin() + index + 1, odd);
 	}
 	return mainchain;
 }
 
-void mergeInsertion(std::vector<Group>& groups)
+template <typename Container, typename T>
+void mergeInsertion(Container& groups)
 {
 	if (groups.size() <= 1)
 		return;
 
-	std::vector<Group> newgroups;
+	Container	newgroups;
 
 	for (size_t i = 0; i + 1 < groups.size(); i += 2)
 	{
-		Group	g;
+		T	g;
 
 		if (groups[i].large > groups[i + 1].large)
 		{
@@ -84,7 +63,7 @@ void mergeInsertion(std::vector<Group>& groups)
 
 		newgroups.push_back(g);
 	}
-	Group	odd;
+	T	odd;
 	bool	oddflag;
 	if (groups.size() % 2 != 0)
 	{
@@ -93,13 +72,11 @@ void mergeInsertion(std::vector<Group>& groups)
 	}
 	else
 		oddflag = false;
-	mergeInsertion(newgroups);
-	//here, do binary insertion sort
-	groups = ft_bubblesort(newgroups);
-	//groups = ft_insertion(newgroups, odd, oddflag);
+	mergeInsertion<Container, T>(newgroups);
+	groups = ft_insertion<Container, T>(newgroups, odd, oddflag);
 }
 
-void sort1(std::vector<int>& list)
+void sortvector(std::vector<int>& list)
 {
 	std::vector<Group> groups;
 
@@ -108,16 +85,27 @@ void sort1(std::vector<int>& list)
 		Group	g;
 
 		g.large = list[i];
-
 		groups.push_back(g);
 	}
 
-	mergeInsertion(groups);
+	mergeInsertion<std::vector<Group>, Group>(groups);
 	for (int i = 0; i < list.size(); i++)
 		list[i] = groups[i].large;
 }
 
-void	sort2(std::deque<int>& list)
+void	sortdeque(std::deque<int>& list)
 {
-	return ;
+	std::deque<Group2> groups;
+
+	for (size_t i = 0; i < list.size(); ++i)
+	{
+		Group2	g;
+
+		g.large = list[i];
+		groups.push_back(g);
+	}
+
+	mergeInsertion<std::deque<Group2>, Group2>(groups);
+	for (int i = 0; i < list.size(); i++)
+		list[i] = groups[i].large;
 }

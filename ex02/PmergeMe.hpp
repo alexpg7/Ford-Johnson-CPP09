@@ -25,7 +25,7 @@ class PmergeMe
 		void	append1(int num);
 		void	append2(int num);
 		void	display();
-		void	sort();
+		void	sort(bool debug);
 		int		getSize();
 };
 
@@ -37,7 +37,13 @@ struct Group
 	std::vector<Group>	list; //[0] large, [1] small
 };
 
+struct Group2
+{
+	int					large;
+	std::deque<Group2>	list; //[0] large, [1] small
+};
+
 
 // sorting algo
-void	sort1(std::vector<int>& list);
-void	sort2(std::deque<int>& list);
+void	sortvector(std::vector<int>& list);
+void	sortdeque(std::deque<int>& list);

@@ -54,20 +54,40 @@ void	PmergeMe::display()
 	}
 }
 
-void	PmergeMe::sort()
+void	PmergeMe::sort(bool debug)
 {
 	_size = list1.size();
 	time1 = get_time_us();
-	sort1(list1);
-	std::cout << "List: ";
-	for (int i = 0; i < list1.size(); i++)
-		std::cout << list1[i] << ", ";
-	std::cout << std::endl;
+	sortvector(list1);
 	totaltime1 += get_time_us() - time1;
 
 	time2 = get_time_us();
-	sort2(list2);
+	sortdeque(list2);
 	totaltime2 += get_time_us() - time2;
+
+	if (debug)
+	{
+		int	element = -1;
+		std::cout << "Sorted vector: ";
+		for (int i = 0; i < list1.size(); i++)
+		{
+			if (list1[i] < element)
+				std::cout << "Unsorted element!!";
+			std::cout << list1[i] << ", ";
+			element = list1[i];
+		}
+		std::cout << "\n" << std::endl;
+		element = -1;
+		std::cout << "Sorted deque: ";
+		for (int i = 0; i < list1.size(); i++)
+		{
+			if (list2[i] < element)
+				std::cout << "Unsorted element!!";
+			std::cout << list2[i] << ", ";
+			element = list2[i];
+		}
+		std::cout << std::endl;
+	}
 	return;
 }
 
