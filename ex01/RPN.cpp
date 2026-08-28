@@ -12,10 +12,10 @@ RPN::RPN(RPN& copy)
 
 static void	ft_operate(std::stack<int>& tokens, char c)
 {
-	int	num1 = tokens.top();
+	int	num2 = tokens.top();
 	tokens.pop();
 
-	int	num2 = tokens.top();
+	int	num1 = tokens.top();
 	tokens.pop();
 
 	switch (c)
