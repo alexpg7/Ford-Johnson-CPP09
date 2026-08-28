@@ -259,7 +259,7 @@ int main(int narg, char **argv)
 	if (!ft_readfile(exchanger, fd))
 	{
 		fd.close();
-		std::cerr << "The input file is not in the correct format (date | value)" << std::endl;
+		std::cerr << "The input file is not in the correct format (date, value)" << std::endl;
 		return (1);
 	}
 	fd.close();
